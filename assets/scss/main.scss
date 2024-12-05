@@ -1,0 +1,481 @@
+@import 'variables';
+
+@mixin link($color){
+    background-image: linear-gradient($color, $color);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 0% 2px;
+    transition: $transition;
+    color: $color;
+    display: inline-block;
+    &:hover{
+        background-size: 100% 2px;
+    }
+}
+@mixin desktop{
+    @media screen and (min-width: 1200px){
+        @content
+    }
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    color: $clr-font;
+    position: relative;
+    font-family: sans-serif;
+    /* diameter of the circle */
+    --d: 2px; 
+    
+    background: radial-gradient(
+    circle at var(--d) var(--d),
+    #050E4A,  /* background color */
+    #f5f5f5 calc(var(--d) - 1px),  /* dot color */
+    #f5f5f5 var(--d) /* dot color continues */
+    ) 0 0 / 30px 30px;
+
+    p, li{
+        font-size: 18px;
+        line-height: 120%;
+        font-weight: 400;
+    }
+
+    h4{
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    h3{        
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    h2{        
+        font-size: 3.5rem;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    h5{
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .link{
+        text-decoration: none;
+        @include link($green)
+    }
+
+    //Button
+    .btn{
+        line-height: 120%;
+        font-size: 1rem;
+        text-decoration: none;
+        color: $clr-white;
+        background-color: $clr-font;
+        border-radius: 50px;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: $transition;
+        border: 2px solid $clr-font;
+        width: fit-content;
+        &:hover{
+            background-color: transparent;
+            color: $clr-font;
+            transform: $transform;
+        }
+    }
+
+    .btn-row{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 2rem;
+        margin-inline: auto;
+        width: fit-content;
+        margin: 2rem;
+    }
+    .container{
+        padding: 4rem;
+    }
+
+    //Card
+    .card{
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+        width: fit-content;
+        text-align: center;
+        background-color: $clr-white;
+        max-width: 367px;
+        transition: $transition;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: center;
+        padding: 4rem;
+        img{
+            width: 367px;
+            height: 306px;
+            object-fit: cover;
+            &.icon{
+                width: 50px;
+                height: 50px;
+                margin-inline: auto;
+            }
+        }
+    }
+
+    .card-row{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 2rem;
+    }
+
+    //Accordion
+    .accordion-container{
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        .accordion{
+            display: flex;
+            flex-direction: column;
+            &:hover{
+                cursor: pointer;
+            }
+            .title-container{
+                background-color: $clr-font;
+                border-radius: 20px;
+                padding: 2rem;
+                h4{
+                    color: $clr-white;
+                }
+            }
+            .content-container{
+                padding: 3rem 20% 3rem 2rem;
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: -2rem;
+                    left: 0;
+                    right: 0;
+                    height: calc(100% + 2rem);
+                    background-color: rgba($blue, .1);
+                    border-radius: 0 0 20px 20px;
+                    z-index: -1;
+                }
+                p{
+                    font-size: 1.3rem;
+                }
+                opacity: 0;
+                top: -4rem;
+                z-index: -1;
+                position: absolute;
+                transition: $transition;
+            }
+            &.active .content-container{
+                position: relative;
+                top: 0;
+                z-index: 0;
+                opacity: 1;
+            }
+        }
+    }
+
+    //Navigation
+    nav{
+        display: flex;
+        // justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        // background-color: $clr-white;
+        padding-inline: 4rem;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: $transition;
+        z-index: 10;
+        & > a, & > div{
+            flex: 1;
+        }
+        & > ul{
+            flex: 9;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo img{
+            width: 12rem;
+            height: 9rem;
+            transition: $transition;
+        }
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            li{
+                list-style: none;
+                a{
+                    @include link(($clr-font));
+                }
+            }
+        }
+        .socials{
+            display: flex;
+            gap: .7rem;
+            a{
+                transition: $transition;
+                img{
+                    width: 1.4rem;
+                    height: 1.4rem;
+                }
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+        &.scrolled{
+            background-color: $clr-white;
+            // box-shadow: 3px 2px 3px 0 $clr-font;
+            .logo img{
+                height: 5rem;
+                width: 6rem;
+                // object-fit: contain;
+            }
+        }
+    }
+
+    //Hero
+    header{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        & > div{
+            flex: 1;
+        }
+        .hero-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h1{
+                font-size: 4.5rem;
+                font-weight: 600;
+                line-height: 120%;
+                margin-bottom: 2rem;
+                @include desktop() {
+                    width: 90%;
+                }
+            }
+            h4{
+                @include desktop() {
+                    width: 74%;
+                }
+            }
+        }
+        .hero-image{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                border-radius: 20px;
+                height: 400px;
+                width: 400px;
+                object-fit: cover;
+                &:last-child{
+                    position: absolute;
+                    z-index: -1;
+                    right: 1%;
+                    top: -15%;
+                }
+            }
+        }
+
+    }
+
+    //Slider
+    .language-slider {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-block: 4rem;
+      
+        .slider-track {
+          display: flex;
+          gap: 2rem;
+          position: relative;
+          animation: scroll 10s linear infinite;
+      
+          .language {
+            flex: 0 0 auto; /* Prevent items from shrinking */
+            font-size: 4rem;
+            padding: 20px 40px;
+            text-align: center;
+            color: $clr-font;
+            position: relative;
+            display: inline-block;
+            &::after{
+                content: '';
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background-color: $clr-font;
+                position: absolute;
+                top: 35%;
+                right: -10%;
+            }
+            &.sotho{
+                color: $green;
+            }
+            &.zulu{
+                color: $yellow;
+            }
+            &.swati{
+                color: $blue;
+            }
+            &.xhosa{
+                color: $red;
+            }
+          }
+        }
+      }
+
+      //How it works
+    #how-it-works{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        .left-side{
+            flex: 1;
+            position: sticky;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            // padding-top: 28vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            p{
+                @include desktop(){
+                    width: 80%;
+                }
+            }
+        }
+        .right-side{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            // gap: 20vh;
+            justify-content: center;
+            align-items: center;
+            padding-top: 7rem;
+            .card{
+                margin-bottom: 25rem;
+                padding: 0 0 2rem 0;
+                p{
+                    width: 80%;
+                    margin-inline: auto;
+                }
+                &:last-child{margin-bottom: 10rem;}
+            }
+        }
+    }  
+    
+    //Sound like a local
+    #sound-like-local{
+        text-align: center;
+        @include desktop(){
+            h2{
+                width: 70%;
+                margin-inline: auto;
+            }
+        }
+        .btn{
+            margin-bottom: 2rem;
+            margin-inline: auto;
+        }
+    }
+
+    //Share your language
+    #share-your-language{
+        background-image: url(/assets/images/Kooluma\ -\ Hero\ Image\ -\ South\ African\ Flag.jpg);
+        color: $clr-white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(#000, .5);
+            z-index: 0;
+        }
+        h2, .btn{
+            z-index: 1;
+            position: relative;
+        }
+        .btn{
+            margin-inline: auto;
+        }
+        padding: 10%;
+    }
+
+    //Why choose Kooluma
+    #why-kooluma{
+        text-align: center;
+        .btn-row{
+            margin-inline: auto;
+        }
+    }
+
+    //Contact
+    #contact{
+        .card-row .card{
+            padding: 0;
+            &:hover{
+                transform: $transform;
+            }
+            a{
+                text-decoration: none;
+                color: inherit;
+                padding: 4rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                justify-content: center;
+            }
+        }
+        .btn{
+            margin-inline: auto;
+            margin-top: 2rem;
+        }
+    }
+
+}
+
+
+/* Animation for sliding effect */
+@keyframes scroll {
+0% {
+    transform: translateX(0);
+}
+100% {
+    transform: translateX(-25%);
+}
+}
