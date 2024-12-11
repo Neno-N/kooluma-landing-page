@@ -1,0 +1,30 @@
+@mixin link($color){
+    background-image: linear-gradient($color, $color);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 0% 2px;
+    transition: $transition;
+    color: $color;
+    display: inline-block;
+    &:hover{
+        background-size: 100% 2px;
+    }
+}
+
+@mixin desktop{
+    @media screen and (min-width: 1200px){
+        @content
+    }
+}
+
+@mixin mobile{
+    @media screen and (max-width: 767px) {
+        @content
+    }
+}
+
+@mixin burgerMenu {
+    @media screen and (max-width: 999px) {
+        @content;
+    }
+}

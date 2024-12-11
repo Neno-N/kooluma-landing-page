@@ -29,3 +29,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//Burger menu
+const burgerBtn = document.querySelector('.burger-btn');
+const navItem = document.querySelectorAll('.nav-item');
+
+burgerBtn.addEventListener("click", ()=>{
+    nav.classList.toggle('show-menu')
+})
+navItem.forEach(item => {
+    item.addEventListener("click", ()=>{
+        console.log('clicked')
+        nav.classList.remove('show-menu');
+    })
+})
+
+// Select all elements with the "reveal" class
+const revealElements = document.querySelectorAll('.reveal');
+
+// Create an IntersectionObserver instance
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the 'visible' class when the element is in view
+            entry.target.classList.add('visible');
+            // Optionally unobserve the element to improve performance
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+// Observe each reveal element
+revealElements.forEach(el => observer.observe(el));
+
