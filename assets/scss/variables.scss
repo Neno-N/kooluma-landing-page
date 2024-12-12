@@ -1,13 +1,14 @@
 $clr-font: #050E4A;
 $clr-white: #f5f5f5;
 $clr-font-red: #7A211B;
+$clr-font-green: #012e17;
 $red: #E03C32;
 $green: #007749;
 $blue: #001389;
 $yellow: #FEB81C;
-$gradient-faq: linear-gradient(90deg,#000523 0%, #001389 25%, #008942 50%, #001389 75%, #000523 100%);
-$gradient-share: linear-gradient(90deg, #008942 0%, #001389 50%, #000523 100%);
-$gradient-learn: linear-gradient(90deg, #E09D32 0%, #E03C32 50%, #7A211B 100%);
+$gradient-faq: linear-gradient(90deg,#020c49 0%, #001389 50%, #020c49 100%);
+$gradient-share: linear-gradient(90deg,#020c49 0%, #001389 15%, #3046d4 50%, #001389 85%, #020c49 100%);
+$gradient-learn: linear-gradient(90deg, #012e17 0%, #008942 50%, #012e17 100%);
 
 $fnt-marker: "Permanent Marker", cursive;
 
