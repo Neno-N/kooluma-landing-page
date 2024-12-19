@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Congenial"; /* Name of your font */
+  src: url("/assets/fonts/fonnts.com-Congenial_Black.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Black_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Bold.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Bold_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_ExtraLight.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_ExtraLight_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Hairline.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Hairline_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Heavy.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Heavy_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Light.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Light_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Medium.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Regular.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Regular_Italic.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_Thin.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_UltraLight.otf") format("otf"), url("/assets/fonts/fonnts.com-Congenial_UltraLight_Italic.otf") format("otf");
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,7 +11,7 @@
 body {
   color: #050E4A;
   position: relative;
-  font-family: sans-serif;
+  font-family: "Signika Negative", sans-serif;
   /* diameter of the circle */
   --d: 2px;
   scroll-behavior: smooth;
@@ -54,6 +58,7 @@ body .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 0.3s;
 }
 body .reveal.visible {
   opacity: 1;
@@ -441,7 +446,14 @@ body header .hero-content h1 {
   margin-bottom: 2rem;
 }
 body header .hero-content h1 span {
+  background-image: linear-gradient(#E03C32 0%, #007749 50%, #001389 60%, #FEB81C 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
   font-size: 5.5rem;
+  font-weight: 600;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  animation: pulse 2s ease infinite alternate;
 }
 @media screen and (min-width: 1200px) {
   body header .hero-content h1 {
@@ -500,7 +512,7 @@ body .language-slider .slider-track {
   display: flex;
   gap: 2rem;
   position: relative;
-  animation: scroll 10s linear infinite;
+  animation: scroll 20s linear infinite alternate;
 }
 body .language-slider .slider-track .language {
   flex: 0 0 auto; /* Prevent items from shrinking */
@@ -510,7 +522,8 @@ body .language-slider .slider-track .language {
   color: #050E4A;
   position: relative;
   display: inline-block;
-  font-family: "Permanent Marker", cursive;
+  font-style: italic;
+  text-transform: uppercase;
 }
 body .language-slider .slider-track .language::after {
   content: "";
@@ -522,16 +535,16 @@ body .language-slider .slider-track .language::after {
   top: 35%;
   right: -10%;
 }
-body .language-slider .slider-track .language.sotho {
+body .language-slider .slider-track .language.green {
   color: #007749;
 }
-body .language-slider .slider-track .language.zulu {
+body .language-slider .slider-track .language.yellow {
   color: #FEB81C;
 }
-body .language-slider .slider-track .language.swati {
+body .language-slider .slider-track .language.blue {
   color: #001389;
 }
-body .language-slider .slider-track .language.xhosa {
+body .language-slider .slider-track .language.red {
   color: #E03C32;
 }
 body #how-it-works {
@@ -628,6 +641,8 @@ body #share-your-language h3 {
   margin-bottom: 2rem;
   font-size: 2.5rem;
   text-align: center;
+  position: relative;
+  z-index: 3;
 }
 body #share-your-language h2 {
   margin-bottom: 1rem;
@@ -678,7 +693,7 @@ body #contact .btn {
   margin-top: 2rem;
 }
 body footer {
-  padding: 4rem 4rem 2rem;
+  padding: 0 4rem 2rem;
   margin-top: 4rem;
   background-color: #050E4A;
   color: #f5f5f5;
@@ -709,10 +724,12 @@ body footer .footer-top, body footer .footer-bottom {
 }
 body footer .footer-top {
   margin-bottom: 2rem;
+  border-bottom: 1.5px solid #f5f5f5;
   gap: 4rem;
 }
 body footer .footer-top .footer-logo {
   flex: 1;
+  padding-block: 4rem 2rem;
 }
 body footer .footer-top .footer-logo a {
   background-image: none;
@@ -730,13 +747,18 @@ body footer .footer-top .footer-logo img {
      object-fit: cover;
   transition: 0.3s ease;
 }
+@media screen and (min-width: 1200px) {
+  body footer .footer-top .footer-logo {
+    border-right: 1.5px solid #f5f5f5;
+  }
+}
 body footer .footer-top .footer-nav, body footer .footer-top .footer-contacts {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 5rem;
   flex: 1;
+  padding-top: 2rem;
 }
 @media screen and (max-width: 767px) {
   body footer .footer-top .footer-nav, body footer .footer-top .footer-contacts {
@@ -744,6 +766,15 @@ body footer .footer-top .footer-nav, body footer .footer-top .footer-contacts {
     gap: 1rem;
     align-items: flex-start;
   }
+}
+body footer .footer-top .footer-nav p, body footer .footer-top .footer-contacts p {
+  flex: 50%;
+  margin-bottom: 1.5rem;
+}
+body footer .footer-top .footer-nav p a, body footer .footer-top .footer-contacts p a {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1rem;
 }
 body footer a {
   color: inherit;
@@ -759,14 +790,14 @@ body footer a {
 body footer a:hover {
   background-size: 100% 2px;
 }
-body footer .footer-bottom a {
+body footer .footer-bottom .socials a {
   background-image: none;
 }
-body footer .footer-bottom a img {
+body footer .footer-bottom .socials a img {
   height: 20px;
   width: 20px;
 }
-body footer .footer-bottom a:hover {
+body footer .footer-bottom .socials a:hover {
   transform: scale(1.1);
 }
 
@@ -776,7 +807,7 @@ body footer .footer-bottom a:hover {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-25%);
+    transform: translateX(-100%);
   }
 }
 @keyframes imageAnimation {
@@ -797,5 +828,13 @@ body footer .footer-bottom a:hover {
   100% {
     right: 30px;
     top: -50px;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
   }
 }/*# sourceMappingURL=main.css.map */
