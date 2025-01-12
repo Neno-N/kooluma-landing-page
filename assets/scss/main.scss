@@ -110,6 +110,9 @@ body{
             z-index: -1;
             transition: $transition;
         }
+        .btn-share, .btn-learn{
+            width: 187px;
+        }
         &.btn-share::before{
             background-image: $gradient-share;
         }
@@ -257,6 +260,9 @@ body{
                 z-index: -1;
                 position: absolute;
                 transition: $transition;
+                @include burgerMenu{
+                    padding: 2rem;
+                }
             }
             &.active .content-container{
                 position: relative;
@@ -363,7 +369,7 @@ body{
                 flex-direction: column;
                 // align-items: flex-start;
                 padding-inline: 2.3rem;
-                padding-block: 2rem;
+                padding-block: 6rem 2rem;
                 transform: translateY(-200vh);
                 transition: $transition;
                 overflow-y: scroll;
@@ -371,6 +377,9 @@ body{
                     flex-direction: column;
                     // align-items: flex-start;
                     gap: 1.5rem;
+                    li{
+                        font-size: 1.65rem;
+                    }
 
                 }
                 &.show-menu{
@@ -633,6 +642,7 @@ body{
     //Sound like a local
     #sound-like-local{
         text-align: center;
+        padding-bottom: 5rem;
         h3{
             margin-bottom: 2rem;
             font-size: 1.5rem;
@@ -653,6 +663,9 @@ body{
                 background-image: linear-gradient(#E03C32 0%, #007749 100%);
                 background-clip: text;
             }
+        }
+        .card:hover{
+            transform: $transform;
         }
         @include desktop(){
             h2{
@@ -719,6 +732,9 @@ body{
         .btn-row{
             margin-inline: auto;
         }
+        .card:hover{
+            transform: $transform;
+        }
     }
 
     //Contact
@@ -749,7 +765,7 @@ body{
     footer{
         padding: 0 4rem 2rem;
         margin-top: 4rem;
-        background-color: $clr-font-light;
+        background-color: #e9ecef;
         color: $clr-font;
         position: fixed;
         bottom: 0;

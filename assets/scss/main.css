@@ -108,6 +108,9 @@ body .btn::before {
   z-index: -1;
   transition: 0.3s ease;
 }
+body .btn .btn-share, body .btn .btn-learn {
+  width: 187px;
+}
 body .btn.btn-share::before {
   background-image: linear-gradient(90deg, #020c49 0%, #001389 15%, #3046d4 50%, #001389 85%, #020c49 100%);
 }
@@ -256,6 +259,11 @@ body .accordion-container .accordion .content-container p {
   font-size: 1.3rem;
   text-align: center;
 }
+@media screen and (max-width: 999px) {
+  body .accordion-container .accordion .content-container {
+    padding: 2rem;
+  }
+}
 body .accordion-container .accordion.active .content-container {
   position: relative;
   top: 0;
@@ -363,7 +371,7 @@ body nav .burger-btn {
     height: calc(100vh - 83.5px);
     flex-direction: column;
     padding-inline: 2.3rem;
-    padding-block: 2rem;
+    padding-block: 6rem 2rem;
     transform: translateY(-200vh);
     transition: 0.3s ease;
     overflow-y: scroll;
@@ -371,6 +379,9 @@ body nav .burger-btn {
   body nav .burger-menu ul {
     flex-direction: column;
     gap: 1.5rem;
+  }
+  body nav .burger-menu ul li {
+    font-size: 1.65rem;
   }
   body nav .burger-menu.show-menu {
     transform: translateY(0);
@@ -618,6 +629,7 @@ body #how-it-works .right-side .card:last-child {
 }
 body #sound-like-local {
   text-align: center;
+  padding-bottom: 5rem;
 }
 body #sound-like-local h3 {
   margin-bottom: 2rem;
@@ -640,6 +652,9 @@ body #sound-like-local h2 > span {
   background-image: linear-gradient(#E03C32 0%, #007749 100%);
   -webkit-background-clip: text;
           background-clip: text;
+}
+body #sound-like-local .card:hover {
+  transform: translate(3px, -3px);
 }
 @media screen and (min-width: 1200px) {
   body #sound-like-local h2 {
@@ -704,6 +719,9 @@ body #why-kooluma.container {
 body #why-kooluma .btn-row {
   margin-inline: auto;
 }
+body #why-kooluma .card:hover {
+  transform: translate(3px, -3px);
+}
 body #contact {
   padding-bottom: 5rem;
 }
@@ -729,7 +747,7 @@ body #contact .btn {
 body footer {
   padding: 0 4rem 2rem;
   margin-top: 4rem;
-  background-color: #959ab1;
+  background-color: #e9ecef;
   color: #050E4A;
   position: fixed;
   bottom: 0;
