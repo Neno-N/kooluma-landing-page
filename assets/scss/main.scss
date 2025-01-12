@@ -355,22 +355,23 @@ body{
             }
             .burger-menu{
                 position: absolute;
-                background-color: $clr-white;
+                background-color: rgba($clr-white, .6);
                 top: 83.5px;
                 left: 0;
                 right: 0;
                 height: calc(100vh - 83.5px);
                 flex-direction: column;
-                align-items: flex-start;
+                // align-items: flex-start;
                 padding-inline: 2.3rem;
-                padding-bottom: 2rem;
+                padding-block: 2rem;
                 transform: translateY(-200vh);
                 transition: $transition;
                 overflow-y: scroll;
                 ul{
                     flex-direction: column;
-                    align-items: flex-start;
+                    // align-items: flex-start;
                     gap: 1.5rem;
+
                 }
                 &.show-menu{
                     transform: translateY(0);
@@ -454,12 +455,16 @@ body{
                     font-size: 5.5rem;
                     font-weight: 600;
                     display: block;
-                    animation: pulse 2s ease infinite alternate;
+                    animation: pulse 4s ease infinite alternate;
                     span{
                         // --webkit-text-fill-color: transparent;
                         -webkit-text-fill-color: transparent;
-                        background-image: $gradient-text;
+                        // background-image: $gradient-text;
+                        background-image: linear-gradient(#E03C32 0%, #007749 100%);
                         background-clip: text;
+                        &:last-child{
+                            background-image: linear-gradient(#007749 15%, #001389 30%, #FEB81C 100%);
+                        }
                     }
                 }
                 @include desktop() {
@@ -642,10 +647,10 @@ body{
                 font-size: 3.5rem;
                 font-weight: 600;
                 display: inline-block;
-                animation: pulse 5s ease infinite alternate;
+                // animation: pulse 4s ease infinite alternate;
                 // --webkit-text-fill-color: transparent;
                 -webkit-text-fill-color: transparent;
-                background-image: $gradient-text;
+                background-image: linear-gradient(#E03C32 0%, #007749 100%);
                 background-clip: text;
             }
         }
@@ -837,6 +842,16 @@ body{
                 &:hover{
                     transform: scale(1.1);
                 }
+            }
+        }
+    }
+
+    //Burger menu
+    @include burgerMenu{
+        header, main, footer{
+            transition: $transition;
+            &.menu-open{
+                filter: blur(5px);
             }
         }
     }

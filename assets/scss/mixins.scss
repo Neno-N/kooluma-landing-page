@@ -5,7 +5,7 @@
     background-size: 0% 2px;
     transition: $transition;
     color: $color;
-    display: inline-block;
+    display: inline;
     &:hover{
         background-size: 100% 2px;
     }

@@ -31,10 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Burger menu
 const burgerBtn = document.querySelector('.burger-btn');
+const header = document.querySelector('header');
+const main = document.querySelector('main');
+const footer = document.querySelector('footer');
 const navItem = document.querySelectorAll('.nav-item');
 
 burgerBtn.addEventListener("click", ()=>{
-    nav.classList.toggle('show-menu')
+    nav.classList.toggle('show-menu');
+    header.classList.toggle('menu-open');
+    main.classList.toggle('menu-open');
+    footer.classList.toggle('menu-open');
 })
 navItem.forEach(item => {
     item.addEventListener("click", ()=>{
