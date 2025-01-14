@@ -46,6 +46,9 @@ navItem.forEach(item => {
     item.addEventListener("click", ()=>{
         console.log('clicked')
         nav.classList.remove('show-menu');
+        header.classList.remove('menu-open');
+        main.classList.remove('menu-open');
+        footer.classList.remove('menu-open');
     })
 })
 
